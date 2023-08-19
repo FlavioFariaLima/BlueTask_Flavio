@@ -6,32 +6,32 @@ public class PlayerCharacter_Controller : MonoBehaviour
 {
     [SerializeField] private float walkSpeed = 3;
     [SerializeField] private float runSpeed = 6;
-    [SerializeField] private float attackCooldown = 0.5f; // Cooldown time between attacks
+    [SerializeField] private float attackCooldown = 0.5f;
     [SerializeField] private Transform characterTransform;
-    [SerializeField] private string flipKeywords = "face,hood,torso"; // Add your keywords here
-    [SerializeField] private int maxHealth = 100; // Maximum health of the character
-    [SerializeField] private Transform projectileSpawnPoint; // New field for projectile starting point
+    [SerializeField] private string flipKeywords = "face,hood,torso";
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private Transform projectileSpawnPoint;
 
 
     [Space]
     [SerializeField] private GameObject magicPrefab;
-    [SerializeField] private float magicSpeed = 10f; // Speed of the lightning projectile
+    [SerializeField] private float magicSpeed = 10f;
 
     // Hidden
-    private bool wasFacingLeft = false; // New field to keep track of last direction faced
+    private bool wasFacingLeft = false;
     private Animator animator;
     private List<SpriteRenderer> spriteRenderers;
     private HashSet<string> flipKeywordSet;
     private Rigidbody2D rb;
-    private int currentHealth; // Current health of the character
+    private int currentHealth;
     private bool isAttacking = false;
-    private float attackCooldownTimer = 0; // Timer for attack cooldown
+    private float attackCooldownTimer = 0;
     private GameObject currentMagic;
 
     // Internals
     internal bool isMoving = false;
     internal bool isRunning = false;
-    internal bool isHit = false; // Indicates if the character is hit by an enemy
+    internal bool isHit = false;
     internal bool isDead = false;
 
     // Methods
@@ -114,7 +114,7 @@ public class PlayerCharacter_Controller : MonoBehaviour
 
         // Apply force to the lightning
         Rigidbody2D lightningRb = spawnedLightning.GetComponent<Rigidbody2D>();
-        lightningRb.velocity = direction * magicSpeed;
+        lightningRb.velocity = direction.normalized * magicSpeed;
 
         yield return new WaitForSeconds(0.5f);
 

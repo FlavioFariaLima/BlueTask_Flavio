@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d71d940b0598249bfc21d7346f9143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 3
+  sortingLayer: Characters
 --- !u!1 &6075975974917516961
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,4 +477,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d71d940b0598249bfc21d7346f9143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingLayer: 3
+  sortingLayer: Characters
