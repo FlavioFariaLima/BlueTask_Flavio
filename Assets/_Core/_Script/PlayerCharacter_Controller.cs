@@ -16,6 +16,7 @@ public class PlayerCharacter_Controller : MonoBehaviour
     [Space]
     [SerializeField] private GameObject magicPrefab;
     [SerializeField] private float magicSpeed = 10f;
+    [SerializeField] private Collider2D myTrigger;
 
     // Hidden
     private bool wasFacingLeft = false;
@@ -107,14 +108,9 @@ public class PlayerCharacter_Controller : MonoBehaviour
         isAttacking = true;
         attackCooldownTimer = attackCooldown;
 
-        GameObject spawnedLightning = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity); // Use the new projectile starting point
-
-        // Calculate the direction to shoot the lightning based on mouse position
         Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-
-        // Apply force to the lightning
-        Rigidbody2D lightningRb = spawnedLightning.GetComponent<Rigidbody2D>();
-        lightningRb.velocity = direction.normalized * magicSpeed;
+        ProjectileBehavior spawnedMagic = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<ProjectileBehavior>();
+        StartCoroutine(spawnedMagic.Init(myTrigger, direction, magicSpeed));
 
         yield return new WaitForSeconds(0.5f);
 

@@ -23,8 +23,10 @@ public class Gameplay_Teleport : MonoBehaviour
             justTeleported = true;
 
 
-            destination.GetComponentInChildren<Gameplay_Teleport>().justTeleported = true; // Evita teletransporte contínuo ao entrar no ponto após ser teletransportado
-            Invoke("ResetTeleportFlag", 0.5f);
+            // Evita teletransporte contínuo ao entrar no ponto após ser teletransportado
+            destination.GetComponentInChildren<Gameplay_Teleport>().justTeleported = true;
+            destination.GetComponentInChildren<Gameplay_Teleport>().Invoke("ResetTeleportFlag", 1.5f);
+            Invoke("ResetTeleportFlag", 1.5f);
         }
     }
 
@@ -32,4 +34,6 @@ public class Gameplay_Teleport : MonoBehaviour
     {
         justTeleported = false;
     }
+
+
 }
