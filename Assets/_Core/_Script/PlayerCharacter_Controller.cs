@@ -10,8 +10,15 @@ public class PlayerCharacter_Controller : MonoBehaviour
     [SerializeField] private Transform characterTransform;
     [SerializeField] private string flipKeywords = "face,hood,torso"; // Add your keywords here
     [SerializeField] private int maxHealth = 100; // Maximum health of the character
+    [SerializeField] private Transform projectileSpawnPoint; // New field for projectile starting point
+
+
+    [Space]
+    [SerializeField] private GameObject magicPrefab;
+    [SerializeField] private float magicSpeed = 10f; // Speed of the lightning projectile
 
     // Hidden
+    private bool wasFacingLeft = false; // New field to keep track of last direction faced
     private Animator animator;
     private List<SpriteRenderer> spriteRenderers;
     private HashSet<string> flipKeywordSet;
@@ -19,6 +26,7 @@ public class PlayerCharacter_Controller : MonoBehaviour
     private int currentHealth; // Current health of the character
     private bool isAttacking = false;
     private float attackCooldownTimer = 0; // Timer for attack cooldown
+    private GameObject currentMagic;
 
     // Internals
     internal bool isMoving = false;
@@ -33,6 +41,9 @@ public class PlayerCharacter_Controller : MonoBehaviour
         spriteRenderers = new List<SpriteRenderer>(characterTransform.GetComponentsInChildren<SpriteRenderer>());
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+
+        currentMagic = Instantiate(magicPrefab, transform.position, Quaternion.identity);
+        currentMagic.SetActive(false);
 
         // Create a HashSet of flip keywords
         string[] keywords = flipKeywords.Split(',');
@@ -50,7 +61,6 @@ public class PlayerCharacter_Controller : MonoBehaviour
             {
                 StartCoroutine(AttackControl());
             }
-
         }
 
         AnimatorControl();
@@ -78,7 +88,12 @@ public class PlayerCharacter_Controller : MonoBehaviour
         // Flip the character sprites based on direction and keywords
         foreach (var renderer in spriteRenderers)
         {
-            bool shouldFlip = horizontalInput < 0 && HasFlipKeyword(renderer.name);
+            if (horizontalInput != 0) // Only change if there's horizontal input
+            {
+                wasFacingLeft = horizontalInput < 0;
+            }
+
+            bool shouldFlip = wasFacingLeft && HasFlipKeyword(renderer.name);
             renderer.flipX = shouldFlip;
         }
 
@@ -91,6 +106,17 @@ public class PlayerCharacter_Controller : MonoBehaviour
     {
         isAttacking = true;
         attackCooldownTimer = attackCooldown;
+
+        GameObject spawnedLightning = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity); // Use the new projectile starting point
+
+        // Calculate the direction to shoot the lightning based on mouse position
+        Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+
+        // Apply force to the lightning
+        Rigidbody2D lightningRb = spawnedLightning.GetComponent<Rigidbody2D>();
+        lightningRb.velocity = direction * magicSpeed;
+
+        yield return new WaitForSeconds(0.5f);
 
         while (attackCooldownTimer > 0)
         {
