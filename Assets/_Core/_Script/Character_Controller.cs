@@ -113,6 +113,10 @@ public class Character_Controller : MonoBehaviour
     {
         if (!Player_UIPanelsManager.Instance.AreAllObjectsDeactivated())
         {
+            isMoving = false;
+            isRunning = false;
+            rb.velocity = Vector2.zero;
+
             return;
         }
         else
