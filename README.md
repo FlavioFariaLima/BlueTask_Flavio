@@ -1,6 +1,6 @@
 # Dungeon Danger
 
-This at PDF Format => [link](https://drive.google.com/file/d/1vJz19kQvF07I6U14XHUDUwd9QAxIFyeH/view?usp=drive_link))
+This at PDF Format => [link](https://drive.google.com/file/d/1vJz19kQvF07I6U14XHUDUwd9QAxIFyeH/view?usp=drive_link)
 
 ## Basic Commands
 
