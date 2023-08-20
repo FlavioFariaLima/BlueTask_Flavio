@@ -33,7 +33,7 @@ Player's Inventory: A basic inventory system where items collected by the player
 
  The inventory system leverages Unity's Event System for drag-and-drop functionality. It allows players to equip, unequip, buy, and sell items via an intuitive UI. 
 
-The equipment system, Character_Equipment,  manages equipped items and updates the character's sprite renderers to reflect the current gear. Both systems are highly modular, enabling easy expansion for new item types and functionalities. Overall, this project serves as a robust foundation for any inventory-related requirements in game development.
+The equipment system, Character_Equipment,  manages equipped items and updates the character's sprite renderers to reflect the current gear. Both systems are highly modular, enabling easy expansion for new item types and functionalities. 
 
 I established an item classification using enumeration for different gear types. Leveraging Unity's ScriptableObjects, I created a blueprint, "Inventory_ItemBlueprint", to define items. This blueprint encompasses essential attributes like item name, icons, type, in-game sprite, and its value, streamlining the process of adding new items to our inventory and equipment system.
 
