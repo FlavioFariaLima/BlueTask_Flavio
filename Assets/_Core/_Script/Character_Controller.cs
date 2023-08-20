@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(PlayerCharacter_Inventory))]
-public class PlayerCharacter_Controller : MonoBehaviour
+[RequireComponent(typeof(Character_Inventory))]
+public class Character_Controller : MonoBehaviour
 {
     [Header("Basic Settings")]
     [SerializeField] private float walkSpeed = 3;
@@ -24,7 +24,7 @@ public class PlayerCharacter_Controller : MonoBehaviour
     [SerializeField] private Slider healthSlider;
 
     [Header("Inventory")]
-    private PlayerCharacter_Inventory playerInventory;
+    private Character_Inventory playerInventory;
 
     // Hidden
     private bool wasFacingLeft = false;
@@ -42,10 +42,10 @@ public class PlayerCharacter_Controller : MonoBehaviour
     internal bool isHit = false;
     internal bool isDead = false;
 
-    // Methods
+    // Unity Methods
     private void Start()
     {
-        playerInventory = GetComponent<PlayerCharacter_Inventory>();
+        playerInventory = GetComponent<Character_Inventory>();
 
         if (!playerInventory)
         {
@@ -81,6 +81,33 @@ public class PlayerCharacter_Controller : MonoBehaviour
         AnimatorControl();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Collision is Loot?
+        if (collision.gameObject.CompareTag("Loot"))
+        {
+            Behavior_Loot loot = collision.gameObject.GetComponent<Behavior_Loot>();
+
+            if (loot.canLoot)
+            {
+                loot.canLoot = false;
+                var items = loot.itens;
+
+                if (playerInventory)
+                {
+                    foreach (Inventory_ItemBlueprint item in items)
+                    {
+                        playerInventory.Add(item);
+                    }
+
+                    loot.SelfDestruct(); // Destroys the loot object after it's collected
+                }
+            }
+        }
+    }
+
+
+    // Methods
     private void MovementControl()
     {
         float horizontalInput = Input.GetAxis("Horizontal");

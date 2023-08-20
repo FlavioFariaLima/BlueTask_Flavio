@@ -41,7 +41,7 @@ public class Behavior_Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && isMonster)
         {
             // Detect player and call the TakeDamage method
-            PlayerCharacter_Controller player = collision.gameObject.GetComponent<PlayerCharacter_Controller>();
+            Character_Controller player = collision.gameObject.GetComponent<Character_Controller>();
             if (player != null)
             {
                 player.TakeDamage(10);

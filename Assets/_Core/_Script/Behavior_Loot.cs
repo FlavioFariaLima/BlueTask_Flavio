@@ -1,20 +1,16 @@
+using System.Collections;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Behavior_Loot : MonoBehaviour
 {
-    [SerializeField]
-    private string itemName = "DefaultLoot";
+    [SerializeField] internal List<Inventory_ItemBlueprint> itens;
+    internal bool canLoot = true;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Methods
+    internal void SelfDestruct()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerCharacter_Inventory playerInventory = collision.gameObject.GetComponent<PlayerCharacter_Inventory>();
-            if (playerInventory)
-            {
-                playerInventory.AddItem(itemName);
-                Destroy(gameObject); // Destroys the loot object after it's collected
-            }
-        }
+        Destroy(gameObject);
     }
 }
