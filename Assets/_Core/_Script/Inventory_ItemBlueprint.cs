@@ -18,6 +18,7 @@ public class Inventory_ItemBlueprint : ScriptableObject
     public string itemName;
     public Sprite icon;
     public ItemType itemType;
-    public Sprite itemSprite;
+    public Sprite spriteMain; 
+    public Sprite spriteAlt; 
     public int value;
 }

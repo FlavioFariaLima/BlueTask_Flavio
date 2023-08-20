@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class Character_Equipment : MonoBehaviour
 {
-    public List<SpriteRenderer> bootsRenderers = new List<SpriteRenderer>();
-    public List<SpriteRenderer> elbowsRenderers = new List<SpriteRenderer>();
-    public List<SpriteRenderer> torsoRenderers = new List<SpriteRenderer>();
-    public List<SpriteRenderer> headRenderers = new List<SpriteRenderer>();
-    public List<SpriteRenderer> faceRenderers = new List<SpriteRenderer>();
-    public List<SpriteRenderer> legsRenderers = new List<SpriteRenderer>();
-    public List<SpriteRenderer> wristRenderers = new List<SpriteRenderer>();
+    public SpriteRenderer bootsRendererRight;
+    public SpriteRenderer bootsRendererLeft;
+    public SpriteRenderer elbowsRendererRight;
+    public SpriteRenderer elbowsRendererLeft;
+    public SpriteRenderer torsoRenderer;
+    public SpriteRenderer headRenderer;
+    public SpriteRenderer faceRenderer;
+    public SpriteRenderer legsRendererRight;
+    public SpriteRenderer legsRendererLeft;
+    public SpriteRenderer wristRendererRight;
+    public SpriteRenderer wristRendererLeft;
 
     private Dictionary<ItemType, Inventory_ItemBlueprint> equippedItems = new Dictionary<ItemType, Inventory_ItemBlueprint>();
 
@@ -27,7 +31,7 @@ public class Character_Equipment : MonoBehaviour
         if (item && item.itemType != ItemType.Generic)
         {
             equippedItems[item.itemType] = item;
-            UpdateEquipRenderers(item.itemType, item.icon);
+            UpdateEquipRenderers(item.itemType, item.spriteMain, item.spriteAlt);
         }
     }
 
@@ -36,45 +40,40 @@ public class Character_Equipment : MonoBehaviour
         if (equippedItems.ContainsKey(itemType))
         {
             equippedItems.Remove(itemType);
-            UpdateEquipRenderers(itemType, null);
+            UpdateEquipRenderers(itemType, null, null);
         }
     }
 
-    private void UpdateEquipRenderers(ItemType itemType, Sprite sprite)
+    private void UpdateEquipRenderers(ItemType itemType, Sprite spriteMain, Sprite spriteAlt)
     {
-        List<SpriteRenderer> targetRenderers = null;
-
         switch (itemType)
         {
             case ItemType.Boots:
-                targetRenderers = bootsRenderers;
+                bootsRendererRight.sprite = spriteMain;
+                bootsRendererLeft.sprite = spriteAlt;
                 break;
             case ItemType.Elbows:
-                targetRenderers = elbowsRenderers;
+                elbowsRendererRight.sprite = spriteMain;
+                elbowsRendererLeft.sprite = spriteAlt;
                 break;
             case ItemType.Torso:
-                targetRenderers = torsoRenderers;
+                torsoRenderer.sprite = spriteMain;
                 break;
             case ItemType.Head:
-                targetRenderers = headRenderers;
+                headRenderer.sprite = spriteMain;
                 break;
             case ItemType.Face:
-                targetRenderers = faceRenderers;
+                faceRenderer.sprite = spriteMain;
                 break;
             case ItemType.Legs:
-                targetRenderers = legsRenderers;
+                legsRendererRight.sprite = spriteMain;
+                legsRendererLeft.sprite = spriteAlt;
                 break;
             case ItemType.Wrist:
-                targetRenderers = wristRenderers;
+                wristRendererRight.sprite = spriteMain;
+                wristRendererLeft.sprite = spriteAlt;
                 break;
-        }
-
-        if (targetRenderers != null)
-        {
-            foreach (var renderer in targetRenderers)
-            {
-                renderer.sprite = sprite;
-            }
         }
     }
 }
+

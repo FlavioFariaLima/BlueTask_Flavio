@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ruby
   m_EditorClassIdentifier: 
   itemName: Ruby
-  icon: {fileID: 21300000, guid: f7e7bed775fff8347b9e53c67e20875f, type: 3}
+  icon: {fileID: 21300006, guid: 0c9b1d0b2a4552241a19ab70af3b4ee3, type: 3}
   itemType: 4
-  itemSprite: {fileID: 21300000, guid: f7e7bed775fff8347b9e53c67e20875f, type: 3}
+  spriteMain: {fileID: 21300006, guid: 5b3d57683d9bd5b41b8e5e66c6beda06, type: 3}
+  spriteAlt: {fileID: 0}
   value: 10

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Legs
   m_EditorClassIdentifier: 
   itemName: Armor Boots
-  icon: {fileID: 21300000, guid: 3cf87d879b214174ea666233f56d905e, type: 3}
+  icon: {fileID: 21300000, guid: c3dbdee0ce8cf8948a9c29068bf93e51, type: 3}
   itemType: 6
-  itemSprite: {fileID: 21300000, guid: 3cf87d879b214174ea666233f56d905e, type: 3}
+  spriteMain: {fileID: 21300000, guid: 7b78357522a34d64bb8775b962b0deb0, type: 3}
+  spriteAlt: {fileID: 21300000, guid: 40e550cd3b539f14eb98d42b6769b592, type: 3}
   value: 5

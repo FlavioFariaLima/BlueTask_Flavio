@@ -118,7 +118,7 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
                 }
             }
 
-            if (hit.gameObject.CompareTag("Equip") && transform.parent.parent.GetComponent<Character_Inventory_UIPanel>())
+            if (hit.gameObject.CompareTag("Equip") && item.itemType == hit.gameObject.GetComponent<Inventory_Slot>().equipType && transform.parent.parent.GetComponent<Character_Inventory_UIPanel>())
             {
                 // Equip item
                 hit.gameObject.GetComponent<Inventory_Slot>().characterEquipment.EquipItem(item);

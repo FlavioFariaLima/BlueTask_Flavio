@@ -1239,7 +1239,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dcb72940063c94f44abc2366768e713a,
+      objectReference: {fileID: 21300000, guid: 45f3bb93e3df3204bb984889f579d327,
         type: 3}
     - target: {fileID: 9137972610540476271, guid: c1bd7cd04e3e2c84b8cbfeafa74c6a98,
         type: 3}
@@ -15268,7 +15268,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6fa8902135d83ff49a376c05761b61d4,
+      objectReference: {fileID: 21300000, guid: 0e7073b873373a346a2166e6abacc604,
         type: 3}
     - target: {fileID: 9137972610540476271, guid: c1bd7cd04e3e2c84b8cbfeafa74c6a98,
         type: 3}
@@ -17611,7 +17611,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 90458a12b047bb84ba77cb7ea81ba457,
+      objectReference: {fileID: 21300000, guid: fc8542cdc3ac66d46901a4eca96d7870,
         type: 3}
     - target: {fileID: 9137972610540476271, guid: c1bd7cd04e3e2c84b8cbfeafa74c6a98,
         type: 3}
@@ -19796,7 +19796,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5cb065829e2f3084cb4dd46e0f41fb30,
+      objectReference: {fileID: 21300000, guid: b48623623521c5646bbaa5c1cf553be1,
         type: 3}
     - target: {fileID: 9137972610540476271, guid: c1bd7cd04e3e2c84b8cbfeafa74c6a98,
         type: 3}
@@ -34840,7 +34840,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 518ab34707033904cb1d99dbfcc9f4bb,
+      objectReference: {fileID: 21300000, guid: fd203893f058f084ab23e6e7170fb587,
         type: 3}
     - target: {fileID: 9137972610540476271, guid: c1bd7cd04e3e2c84b8cbfeafa74c6a98,
         type: 3}
@@ -50191,6 +50191,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 4428117346879624204, guid: 674cc6f6ff0ded0479e738d746ead35f,
+        type: 3}
+      propertyPath: headRenderer
+      value: 
+      objectReference: {fileID: 4533046828209084902}
     - target: {fileID: 4430944695080013991, guid: 674cc6f6ff0ded0479e738d746ead35f,
         type: 3}
       propertyPath: m_RootOrder
@@ -52047,21 +52052,13 @@ MonoBehaviour:
   playerEconomy: {fileID: 4428117346879624203}
   storeItemsParent: {fileID: 4910947553372899519}
   initialStoreItems:
-  - {fileID: 11400000, guid: 8eb159d40c2a9c543b839bcd7432fa07, type: 2}
   - {fileID: 11400000, guid: 3468f413ba0b65d43989dc57f21f737a, type: 2}
   - {fileID: 11400000, guid: 67ef54403dfadac4f96f839b58cf3e5e, type: 2}
   - {fileID: 11400000, guid: c3cfbf452d4f4d74cb75355336db8342, type: 2}
   - {fileID: 11400000, guid: babce1e3e6fb6af49a2402525e9a2ae5, type: 2}
-  - {fileID: 11400000, guid: 721aafa058fda5740b82066a734f79ba, type: 2}
-  - {fileID: 11400000, guid: 19d4b2cb65b566548801724b1ed0f84f, type: 2}
-  - {fileID: 11400000, guid: 8107ce7a8e6c2f643b4deebae5213f9d, type: 2}
-  - {fileID: 11400000, guid: 6d576bb70ec179042a5800c7f9c79341, type: 2}
-  - {fileID: 11400000, guid: 855897cb5049db24a9399ae68a954f46, type: 2}
-  - {fileID: 11400000, guid: 522afebd25d72444fbd070303dd88e36, type: 2}
-  - {fileID: 11400000, guid: 7a377aebd9971e94399567ce7166915f, type: 2}
-  - {fileID: 11400000, guid: e325c418c58cec043b55e53ee38ba7f6, type: 2}
-  - {fileID: 11400000, guid: ed91011c6c5024c4388e4c9c9c2693e7, type: 2}
+  - {fileID: 11400000, guid: 8eb159d40c2a9c543b839bcd7432fa07, type: 2}
   - {fileID: 11400000, guid: c671e6bf2439c9f42bd14e8c5b6d44d2, type: 2}
+  - {fileID: 11400000, guid: 7a377aebd9971e94399567ce7166915f, type: 2}
 --- !u!114 &4910947552795630678
 MonoBehaviour:
   m_ObjectHideFlags: 0

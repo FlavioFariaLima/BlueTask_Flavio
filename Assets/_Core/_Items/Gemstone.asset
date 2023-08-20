@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Gemstone
   icon: {fileID: 21300002, guid: 22dd6ca839bb41f4ea2a5e1e0eb58ae9, type: 3}
+  itemType: 0
+  spriteMain: {fileID: 21300002, guid: 22dd6ca839bb41f4ea2a5e1e0eb58ae9, type: 3}
+  spriteAlt: {fileID: 0}
   value: 5

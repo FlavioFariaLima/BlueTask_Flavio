@@ -214,7 +214,17 @@ public class Character_Controller : MonoBehaviour
         // Set animator parameters based on movement and actions
         animator.SetBool("IsMoving", isMoving);
         animator.SetBool("IsRunning", isRunning);
-        animator.SetBool("IsAttacking", isAttacking);
+
+        if (isMoving || isRunning)
+        {
+            animator.SetBool("IsAttacking", false);
+        }
+        else
+        {
+
+            animator.SetBool("IsAttacking", isAttacking);
+        }
+
         animator.SetBool("IsHit", isHit);
         animator.SetBool("IsDead", isDead);
 

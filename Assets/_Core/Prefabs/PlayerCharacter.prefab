@@ -1113,24 +1113,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401882b963778e24395e993c7fe91e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bootsRenderers:
-  - {fileID: 4576494669714999997}
-  - {fileID: 4576494669130267571}
-  elbowsRenderers:
-  - {fileID: 4576494667323982719}
-  - {fileID: 4576494668163416447}
-  torsoRenderers:
-  - {fileID: 4576494668293901749}
-  headRenderers:
-  - {fileID: 4576494667442973611}
-  faceRenderers:
-  - {fileID: 4576494666549495907}
-  legsRenderers:
-  - {fileID: 4576494666071310181}
-  - {fileID: 4576494668676802349}
-  wristRenderers:
-  - {fileID: 4576494669739493211}
-  - {fileID: 4576494669854733103}
+  bootsRendererRight: {fileID: 4576494669714999997}
+  bootsRendererLeft: {fileID: 4576494669130267571}
+  elbowsRendererRight: {fileID: 4576494668163416447}
+  elbowsRendererLeft: {fileID: 4576494667323982719}
+  torsoRenderer: {fileID: 4576494668293901749}
+  headRenderer: {fileID: 0}
+  faceRenderer: {fileID: 4576494666549495907}
+  legsRendererRight: {fileID: 4576494668676802349}
+  legsRendererLeft: {fileID: 4576494666071310181}
+  wristRendererRight: {fileID: 4576494669854733103}
+  wristRendererLeft: {fileID: 4576494669739493211}
 --- !u!1 &4427136038873443569
 GameObject:
   m_ObjectHideFlags: 0
