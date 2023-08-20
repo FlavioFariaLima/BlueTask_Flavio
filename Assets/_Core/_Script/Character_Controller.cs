@@ -111,60 +111,75 @@ public class Character_Controller : MonoBehaviour
     // Methods
     private void MovementControl()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        Vector2 dir = new Vector2(horizontalInput, verticalInput).normalized;
-
-        isMoving = dir.magnitude > 0;
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (!Player_UIPanelsManager.Instance.AreAllObjectsDeactivated())
         {
-            isRunning = true;
-            isMoving = false;
+            return;
         }
         else
         {
-            isRunning = false;
-        }
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
 
-        // Flip the character sprites based on direction and keywords
-        foreach (var renderer in spriteRenderers)
-        {
-            if (horizontalInput != 0) // Only change if there's horizontal input
+            Vector2 dir = new Vector2(horizontalInput, verticalInput).normalized;
+
+            isMoving = dir.magnitude > 0;
+
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                wasFacingLeft = horizontalInput < 0;
+                isRunning = true;
+                isMoving = false;
+            }
+            else
+            {
+                isRunning = false;
             }
 
-            bool shouldFlip = wasFacingLeft && HasFlipKeyword(renderer.name);
-            renderer.flipX = shouldFlip;
-        }
+            // Flip the character sprites based on direction and keywords
+            foreach (var renderer in spriteRenderers)
+            {
+                if (horizontalInput != 0) // Only change if there's horizontal input
+                {
+                    wasFacingLeft = horizontalInput < 0;
+                }
 
-        // Update character velocity based on running state
-        float currentSpeed = isRunning ? runSpeed : walkSpeed;
-        rb.velocity = currentSpeed * dir;
+                bool shouldFlip = wasFacingLeft && HasFlipKeyword(renderer.name);
+                renderer.flipX = shouldFlip;
+            }
+
+            // Update character velocity based on running state
+            float currentSpeed = isRunning ? runSpeed : walkSpeed;
+            rb.velocity = currentSpeed * dir;
+        }
     }
 
     private IEnumerator AttackControl()
     {
-        isAttacking = true;
-        attackCooldownTimer = attackCooldown;
-
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z - transform.position.z));
-        Vector2 direction = (mouseWorldPosition - transform.position).normalized;
-
-        Behavior_Projectile spawnedMagic = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Behavior_Projectile>();
-        StartCoroutine(spawnedMagic.Init(direction, magicSpeed));
-
-        yield return new WaitForSeconds(0.5f);
-
-        while (attackCooldownTimer > 0)
+        if (!Player_UIPanelsManager.Instance.AreAllObjectsDeactivated())
         {
-            attackCooldownTimer -= Time.deltaTime;
             yield return null;
         }
+        else
+        {
 
-        isAttacking = false;
+            isAttacking = true;
+            attackCooldownTimer = attackCooldown;
+
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z - transform.position.z));
+            Vector2 direction = (mouseWorldPosition - transform.position).normalized;
+
+            Behavior_Projectile spawnedMagic = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Behavior_Projectile>();
+            StartCoroutine(spawnedMagic.Init(direction, magicSpeed));
+
+            yield return new WaitForSeconds(0.5f);
+
+            while (attackCooldownTimer > 0)
+            {
+                attackCooldownTimer -= Time.deltaTime;
+                yield return null;
+            }
+
+            isAttacking = false;
+        }
     }
 
     private bool HasFlipKeyword(string name)
