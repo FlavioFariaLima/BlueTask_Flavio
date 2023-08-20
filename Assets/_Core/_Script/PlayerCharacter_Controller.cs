@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(PlayerCharacter_Inventory))]
 public class PlayerCharacter_Controller : MonoBehaviour
 {
+    [Header("Basic Settings")]
     [SerializeField] private float walkSpeed = 3;
     [SerializeField] private float runSpeed = 6;
     [SerializeField] private float attackCooldown = 0.5f;
     [SerializeField] private Transform characterTransform;
     [SerializeField] private string flipKeywords = "face,hood,torso";
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private int currentHealth;
 
-
-    [Space]
+    [Header("Spell")]
     [SerializeField] private GameObject magicPrefab;
     [SerializeField] private float magicSpeed = 10f;
-    [SerializeField] private Collider2D myTrigger;
+    [SerializeField] private Transform projectileSpawnPoint;
+
+    [Header("UI")]
+    [SerializeField] private Slider healthSlider;
+
+    [Header("Inventory")]
+    private PlayerCharacter_Inventory playerInventory;
 
     // Hidden
     private bool wasFacingLeft = false;
@@ -24,7 +32,6 @@ public class PlayerCharacter_Controller : MonoBehaviour
     private List<SpriteRenderer> spriteRenderers;
     private HashSet<string> flipKeywordSet;
     private Rigidbody2D rb;
-    private int currentHealth;
     private bool isAttacking = false;
     private float attackCooldownTimer = 0;
     private GameObject currentMagic;
@@ -38,6 +45,13 @@ public class PlayerCharacter_Controller : MonoBehaviour
     // Methods
     private void Start()
     {
+        playerInventory = GetComponent<PlayerCharacter_Inventory>();
+
+        if (!playerInventory)
+        {
+            Debug.LogError("Inventory script not found! Please attach it to the Player.");
+        }
+
         animator = GetComponent<Animator>();
         spriteRenderers = new List<SpriteRenderer>(characterTransform.GetComponentsInChildren<SpriteRenderer>());
         rb = GetComponent<Rigidbody2D>();
@@ -109,8 +123,8 @@ public class PlayerCharacter_Controller : MonoBehaviour
         attackCooldownTimer = attackCooldown;
 
         Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-        ProjectileBehavior spawnedMagic = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<ProjectileBehavior>();
-        StartCoroutine(spawnedMagic.Init(myTrigger, direction, magicSpeed));
+        Behavior_Projectile spawnedMagic = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Behavior_Projectile>();
+        StartCoroutine(spawnedMagic.Init(direction, magicSpeed));
 
         yield return new WaitForSeconds(0.5f);
 
@@ -140,6 +154,8 @@ public class PlayerCharacter_Controller : MonoBehaviour
         if (!isDead)
         {
             currentHealth -= damage;
+            UpdateHealthUI();
+
             if (currentHealth <= 0)
             {
                 Die();
@@ -155,7 +171,10 @@ public class PlayerCharacter_Controller : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        // Play death animation or feedback
+        isMoving = false;
+        isRunning = false;
+
+        rb.velocity = Vector2.zero;
     }
 
     private void AnimatorControl()
@@ -169,5 +188,13 @@ public class PlayerCharacter_Controller : MonoBehaviour
 
         // Reset the isHit flag after updating the animator
         isHit = false;
+    }
+
+    private void UpdateHealthUI()
+    {
+        if (healthSlider)
+        {
+            healthSlider.value = (float)currentHealth / maxHealth;
+        }
     }
 }

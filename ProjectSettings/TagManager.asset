@@ -9,6 +9,8 @@ TagManager:
   - LevelChanger
   - FxTemporaire
   - Monster
+  - Crate
+  - Loot
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Crate
   - 
   - 
   - 

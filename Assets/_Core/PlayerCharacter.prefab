@@ -850,7 +850,7 @@ Transform:
   m_GameObject: {fileID: 4427136038598422235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.49376273, y: 1.9157691, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4430944696993119361}
@@ -896,10 +896,12 @@ MonoBehaviour:
   characterTransform: {fileID: 4430944696993119361}
   flipKeywords: face,hood,torso
   maxHealth: 100
-  projectileSpawnPoint: {fileID: 4430944693329577035}
+  currentHealth: 0
   magicPrefab: {fileID: 470248291213164344, guid: f07d99130683caa4c98b502053208d59,
     type: 3}
-  magicSpeed: 10
+  magicSpeed: 20
+  projectileSpawnPoint: {fileID: 4430944693329577035}
+  healthSlider: {fileID: 0}
 --- !u!50 &4333121750245961343
 Rigidbody2D:
   serializedVersion: 4
@@ -917,9 +919,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &4333121750245961342
 BoxCollider2D:
@@ -989,7 +991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4430944697551104651
 Transform:
   m_ObjectHideFlags: 0
@@ -1141,7 +1143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4430944694440144543
 Transform:
   m_ObjectHideFlags: 0
