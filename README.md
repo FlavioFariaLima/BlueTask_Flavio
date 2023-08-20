@@ -1,6 +1,6 @@
 # Dungeon Danger
 
-This at PDF Format => [link](https://github.com/FlavioFariaLima/BlueTask_Flavio/blob/main/README.md))
+This at PDF Format => [link](https://drive.google.com/file/d/1vJz19kQvF07I6U14XHUDUwd9QAxIFyeH/view?usp=drive_link))
 
 ## Basic Commands
 
@@ -32,3 +32,4 @@ I established an item classification using enumeration for different gear types.
 I developed an enemy behavior system for our game, Behavior_Enemy. I integrated basic enemy configurations, such as movement speed, detection range, and health. The enemy constantly roams within a set radius and uses a distance check to detect and fire magic projectiles at the player. Upon defeat, the enemy has the potential to drop in-game loot. The built-in error checks ensure that references are correctly set, providing a seamless gameplay experience.
 
 I implemented a main menu script to manage the game flow. It provides functionalities to pause, resume, and exit the game, automatically binding to Unity's user interface buttons.
+Also a Singleton-based SoundLibrary in Unity to manage audio playback. It stores an array of named audio clips and exposes a method to play them.
