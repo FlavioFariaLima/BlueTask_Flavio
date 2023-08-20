@@ -1,17 +1,24 @@
 # Dungeon Danger
 
 This at PDF Format => [link](https://drive.google.com/file/d/1vJz19kQvF07I6U14XHUDUwd9QAxIFyeH/view?usp=drive_link)
+
 Release => [link](https://github.com/FlavioFariaLima/BlueTask_Flavio/releases/tag/BlueProject)
 
 ## Basic Commands
 
 WASD - To move the Character;
 Click with the mouse to shoot in the direction the cursor is pointing;
+
 It is not possible to move and fire the spell at the same time. I like hardcore;
+
 Approach the wizard to interact. Drag to sell or to buy;
+
 Use the teleport;
+
 Shoot the boxes or vases to break them;
+
 You can also push some objects;
+
 Beware of enemies;
 
 ## Project Description
