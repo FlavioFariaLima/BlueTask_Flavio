@@ -90,19 +90,13 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
 
         icon.transform.localPosition = Vector3.zero;
 
-        if (isEquipSlot && item && item.itemType == equipType)
-        {
-            // Equip item
-            characterEquipment.EquipItem(item);
-        }
-
         // Check if the item was dropped on the store
         List<RaycastResult> hitObjects = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, hitObjects);
 
         foreach (var hit in hitObjects)
         {
-            if (hit.gameObject.CompareTag("Store"))
+            if (hit.gameObject.CompareTag("Store") && transform.parent.parent.GetComponent<Character_Inventory_UIPanel>())
             {
                 Store store = hit.gameObject.GetComponent<Store>();
                 if (store)
@@ -112,7 +106,7 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
                 }
             }
 
-            if (hit.gameObject.CompareTag("Player"))
+            if (hit.gameObject.CompareTag("Player") && transform.parent.parent.GetComponent<Store>())
             {
                 Character_Inventory_UIPanel inv = hit.gameObject.GetComponent<Character_Inventory_UIPanel>();
                 if (inv)
@@ -121,6 +115,17 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
                     inv.Drop(item, this); // let the store handle it
                 }
             }
+
+            if (hit.gameObject.CompareTag("Equip") && transform.parent.parent.GetComponent<Character_Inventory_UIPanel>())
+            {
+                // Equip item
+                hit.gameObject.GetComponent<Inventory_Slot>().characterEquipment.EquipItem(item);
+                hit.gameObject.GetComponent<Inventory_Slot>().AddItem(item);
+                ClearSlot();
+
+                Debug.LogWarning("Drop Equip");
+            }
+
         }
     }
 
