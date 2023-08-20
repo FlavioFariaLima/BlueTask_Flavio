@@ -1,16 +1,24 @@
 # Dungeon Danger
 
-This at PDF Format => [link](https://drive.google.com/file/d/1vJz19kQvF07I6U14XHUDUwd9QAxIFyeH/view?usp=drive_link)
+This at PDF Format => [link](https://drive.google.com/file/d/1v0fMYzSkmhKfy_cJDzhUCLxwD7wbEXzt/view?usp=drive_link)
+
+Release => [link](https://github.com/FlavioFariaLima/BlueTask_Flavio/releases/tag/BlueProject)
 
 ## Basic Commands
 
 WASD - To move the Character;
 Click with the mouse to shoot in the direction the cursor is pointing;
+
 It is not possible to move and fire the spell at the same time. I like hardcore;
+
 Approach the wizard to interact. Drag to sell or to buy;
+
 Use the teleport;
+
 Shoot the boxes or vases to break them;
+
 You can also push some objects;
+
 Beware of enemies;
 
 ## Project Description
@@ -25,7 +33,7 @@ Player's Inventory: A basic inventory system where items collected by the player
 
  The inventory system leverages Unity's Event System for drag-and-drop functionality. It allows players to equip, unequip, buy, and sell items via an intuitive UI. 
 
-The equipment system, Character_Equipment,  manages equipped items and updates the character's sprite renderers to reflect the current gear. Both systems are highly modular, enabling easy expansion for new item types and functionalities. Overall, this project serves as a robust foundation for any inventory-related requirements in game development.
+The equipment system, Character_Equipment,  manages equipped items and updates the character's sprite renderers to reflect the current gear. Both systems are highly modular, enabling easy expansion for new item types and functionalities. 
 
 I established an item classification using enumeration for different gear types. Leveraging Unity's ScriptableObjects, I created a blueprint, "Inventory_ItemBlueprint", to define items. This blueprint encompasses essential attributes like item name, icons, type, in-game sprite, and its value, streamlining the process of adding new items to our inventory and equipment system.
 
