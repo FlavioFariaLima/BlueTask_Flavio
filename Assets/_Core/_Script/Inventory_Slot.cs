@@ -21,21 +21,37 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
     {
         if (!IsPointerInUIObject())
         {
-            // Largue o item se estiver fora do inventário
+            // Drop item
             ClearSlot();
         }
 
         icon.transform.localPosition = Vector3.zero;
+
+        // Sell
+        List<RaycastResult> hitObjects = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, hitObjects);
+
+        foreach (var hit in hitObjects)
+        {
+            if (hit.gameObject.CompareTag("Store"))
+            {
+                Store store = hit.gameObject.GetComponent<Store>();
+                if (store)
+                {
+                    store.OnDrop(eventData);
+                }
+            }
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Implementar se necessário
+        //
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        // Implementar se necessário
+       //
     }
 
     private bool IsPointerInUIObject()

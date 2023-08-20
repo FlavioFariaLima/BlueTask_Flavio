@@ -12,6 +12,7 @@ TagManager:
   - Crate
   - Loot
   - NPC
+  - Store
   layers:
   - Default
   - TransparentFX

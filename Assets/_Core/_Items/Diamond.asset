@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c17d78c7a6c63d43af15c40e067680d, type: 3}
-  m_Name: Gemstone
+  m_Name: Diamond
   m_EditorClassIdentifier: 
-  itemName: Gemstone
-  icon: {fileID: 21300002, guid: 22dd6ca839bb41f4ea2a5e1e0eb58ae9, type: 3}
-  value: 5
+  itemName: Diamond
+  icon: {fileID: 21300000, guid: 00ce89d6e61d3734cacb900d87b4e0fe, type: 3}
+  value: 20

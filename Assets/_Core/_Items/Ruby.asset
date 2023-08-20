@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c17d78c7a6c63d43af15c40e067680d, type: 3}
-  m_Name: Coin
+  m_Name: Ruby
   m_EditorClassIdentifier: 
-  itemName: Gold Coin
-  icon: {fileID: 21300000, guid: 14b58ec41fdd2db4e8f80b615974fce9, type: 3}
+  itemName: Ruby
+  icon: {fileID: 21300006, guid: 01fb03ab7f24b5f4eb3bbe8e25864b7c, type: 3}
+  value: 10

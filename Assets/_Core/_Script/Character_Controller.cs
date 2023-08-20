@@ -149,7 +149,9 @@ public class Character_Controller : MonoBehaviour
         isAttacking = true;
         attackCooldownTimer = attackCooldown;
 
-        Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z - transform.position.z));
+        Vector2 direction = (mouseWorldPosition - transform.position).normalized;
+
         Behavior_Projectile spawnedMagic = Instantiate(magicPrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Behavior_Projectile>();
         StartCoroutine(spawnedMagic.Init(direction, magicSpeed));
 
