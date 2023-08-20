@@ -2,7 +2,7 @@
 
 This at PDF Format => [link](https://drive.google.com/file/d/1v0fMYzSkmhKfy_cJDzhUCLxwD7wbEXzt/view?usp=drive_link)
 
-Release => [link](https://github.com/FlavioFariaLima/BlueTask_Flavio/releases/tag/BlueProject)
+Release => [link](https://github.com/FlavioFariaLima/BlueTask_Flavio/releases)
 
 ## Basic Commands
 
