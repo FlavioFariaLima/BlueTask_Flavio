@@ -8,6 +8,10 @@ public class Character_Inventory : MonoBehaviour
     public int space = 10;
     public List<Inventory_Slot> slots = new List<Inventory_Slot>();
 
+    [Space]
+    public Dictionary<ItemType, Inventory_ItemBlueprint> equippedItems = new Dictionary<ItemType, Inventory_ItemBlueprint>();
+
+
     // Methods
     public bool Add(Inventory_ItemBlueprint item)
     {
@@ -31,6 +35,22 @@ public class Character_Inventory : MonoBehaviour
                 slots[i].ClearSlot();
                 break;
             }
+        }
+    }
+
+    public void EquipItem(Inventory_ItemBlueprint itemToEquip)
+    {
+        if (itemToEquip.itemType != ItemType.Generic)
+        {
+            
+            if (equippedItems.ContainsKey(itemToEquip.itemType))
+            {
+                Add(equippedItems[itemToEquip.itemType]);
+                equippedItems.Remove(itemToEquip.itemType);
+            }
+
+            equippedItems[itemToEquip.itemType] = itemToEquip;
+            Remove(itemToEquip);
         }
     }
 }

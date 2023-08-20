@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Store : MonoBehaviour, IDropHandler
+public class Store : MonoBehaviour
 {
     public Character_Inventory playerInventory;
     public Character_Economy playerEconomy;
@@ -12,36 +12,27 @@ public class Store : MonoBehaviour, IDropHandler
     public Transform storeItemsParent;
     private List<Inventory_Slot> storeSlots = new List<Inventory_Slot>();
 
+    [Header("Initial Store Items")]
+    public List<Inventory_ItemBlueprint> initialStoreItems; // Lista de itens iniciais
+
     private void Start()
     {
         storeSlots.AddRange(storeItemsParent.GetComponentsInChildren<Inventory_Slot>());
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        Inventory_Slot droppedItemSlot = eventData.pointerDrag.GetComponent<Inventory_Slot>();
-
-        if (droppedItemSlot && droppedItemSlot.item)
+        
+        
+        for (int i = 0; i < initialStoreItems.Count && i < storeSlots.Count; i++)
         {
-            // Player selling to the store
-            if (playerInventory.slots.Contains(droppedItemSlot))
-            {
-                playerEconomy.AddCoins(droppedItemSlot.item.value);
-                playerInventory.Remove(droppedItemSlot.item);
-                AddItemToStore(droppedItemSlot.item);
-            }
-            // Player buying from the store
-            else if (storeSlots.Contains(droppedItemSlot))
-            {
-                if (playerEconomy.CanAfford(droppedItemSlot.item.value))
-                {
-                    playerEconomy.DeductCoins(droppedItemSlot.item.value);
-                    playerInventory.Add(droppedItemSlot.item);
-                    RemoveItemFromStore(droppedItemSlot);
-                }
-            }
+            storeSlots[i].AddItem(initialStoreItems[i]);
         }
     }
+
+    public void Drop(Inventory_ItemBlueprint item)
+    {
+        playerEconomy.AddCoins(item.value);
+        playerInventory.Remove(item);
+        AddItemToStore(item);
+    }
+
 
     private void AddItemToStore(Inventory_ItemBlueprint item)
     {
@@ -55,7 +46,7 @@ public class Store : MonoBehaviour, IDropHandler
         }
     }
 
-    private void RemoveItemFromStore(Inventory_Slot slotToRemove)
+    internal void RemoveItemFromStore(Inventory_Slot slotToRemove)
     {
         slotToRemove.ClearSlot();
     }

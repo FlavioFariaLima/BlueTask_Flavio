@@ -8,18 +8,24 @@ public class Character_InventoryUI : MonoBehaviour
     public Transform itemsParent;
     public Character_Inventory characterInventory;
 
+    [Space]
+    public Transform equipmentParent;
+
     Inventory_Slot[] slots;
+    Inventory_Slot[] equipmentSlots;
 
     void Start()
     {
         slots = itemsParent.GetComponentsInChildren<Inventory_Slot>();
         characterInventory.slots = new List<Inventory_Slot>(slots);
+        equipmentSlots = equipmentParent.GetComponentsInChildren<Inventory_Slot>();
+
         UpdateUI();
     }
 
     void Update()
     {
-        // Atualiza a UI do inventário, se necessário.
+        
     }
 
     void UpdateUI()
@@ -33,6 +39,15 @@ public class Character_InventoryUI : MonoBehaviour
             else
             {
                 slots[i].ClearSlot();
+            }
+        }
+
+        foreach (var item in characterInventory.equippedItems)
+        {
+            int slotIndex = (int)item.Key;
+            if (slotIndex < equipmentSlots.Length)
+            {
+                equipmentSlots[slotIndex].AddItem(item.Value);
             }
         }
     }
