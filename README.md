@@ -1,19 +1,19 @@
-# BlueTask_Flavio
-
 # Dungeon Danger
 
+This at PDF Format => [link](https://github.com/FlavioFariaLima/BlueTask_Flavio/blob/main/README.md))
 
-# Basic Commands
+## Basic Commands
 
 WASD - To move the Character;
 Click with the mouse to shoot in the direction the cursor is pointing;
 It is not possible to move and fire the spell at the same time. I like hardcore;
 Approach the wizard to interact. Drag to sell or to buy;
+Use the teleport;
 Shoot the boxes or vases to break them;
 You can also push some objects;
 Beware of enemies;
 
-# Project Description
+## Project Description
 
 I implemented a simple loot collection system for a character within a Unity game.
 
@@ -32,4 +32,3 @@ I established an item classification using enumeration for different gear types.
 I developed an enemy behavior system for our game, Behavior_Enemy. I integrated basic enemy configurations, such as movement speed, detection range, and health. The enemy constantly roams within a set radius and uses a distance check to detect and fire magic projectiles at the player. Upon defeat, the enemy has the potential to drop in-game loot. The built-in error checks ensure that references are correctly set, providing a seamless gameplay experience.
 
 I implemented a main menu script to manage the game flow. It provides functionalities to pause, resume, and exit the game, automatically binding to Unity's user interface buttons.
-
