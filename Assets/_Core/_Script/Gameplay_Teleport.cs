@@ -17,6 +17,8 @@ public class Gameplay_Teleport : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
 
+            Gameplay_SoundLibrary.instance.PlaySound("Teleport");
+
             collision.transform.position = destination.position;
 
 

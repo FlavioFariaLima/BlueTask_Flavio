@@ -21,6 +21,8 @@ public class Behavior_Crate : MonoBehaviour
             DropLoot();
             Destroy(gameObject);
         }
+
+        Gameplay_SoundLibrary.instance.PlaySound("HitEnemy");
     }
 
     private void DropLoot()
@@ -28,6 +30,7 @@ public class Behavior_Crate : MonoBehaviour
         if (lootPrefab)
         {
             Instantiate(lootPrefab, transform.position, Quaternion.identity);
+            Gameplay_SoundLibrary.instance.PlaySound("Drop");
         }
     }
 }

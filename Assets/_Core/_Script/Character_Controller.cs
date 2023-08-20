@@ -81,6 +81,7 @@ public class Character_Controller : MonoBehaviour
         AnimatorControl();
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Collision is Loot?
@@ -100,12 +101,12 @@ public class Character_Controller : MonoBehaviour
                         playerInventory.Add(item);
                     }
 
+                    Gameplay_SoundLibrary.instance.PlaySound("ChangeItem");
                     loot.SelfDestruct(); // Destroys the loot object after it's collected
                 }
             }
         }
     }
-
 
     // Methods
     private void MovementControl()
@@ -188,10 +189,12 @@ public class Character_Controller : MonoBehaviour
             if (currentHealth <= 0)
             {
                 Die();
+                Gameplay_SoundLibrary.instance.PlaySound("Die");
             }
             else
             {
                 isHit = true;
+                Gameplay_SoundLibrary.instance.PlaySound("Hit");
                 // Play hit animation or feedback
             }
         }

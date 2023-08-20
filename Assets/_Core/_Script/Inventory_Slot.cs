@@ -103,6 +103,7 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
                 {
                     Debug.LogWarning("Store");
                     store.Drop(item); // let the store handle it
+                    Gameplay_SoundLibrary.instance.PlaySound("ChangeItem");
                 }
             }
 
@@ -113,6 +114,7 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
                 {
                     Debug.LogWarning("Store");
                     inv.Drop(item, this); // let the store handle it
+
                 }
             }
 
@@ -121,7 +123,15 @@ public class Inventory_Slot : MonoBehaviour, IDragHandler, IEndDragHandler, IPoi
                 // Equip item
                 hit.gameObject.GetComponent<Inventory_Slot>().characterEquipment.EquipItem(item);
                 hit.gameObject.GetComponent<Inventory_Slot>().AddItem(item);
-                ClearSlot();
+
+                if (hit.gameObject.GetComponent<Inventory_Slot>().item)
+                {
+                    AddItem(hit.gameObject.GetComponent<Inventory_Slot>().item);
+                }
+                else
+                {
+                    ClearSlot();
+                }
 
                 Debug.LogWarning("Drop Equip");
             }

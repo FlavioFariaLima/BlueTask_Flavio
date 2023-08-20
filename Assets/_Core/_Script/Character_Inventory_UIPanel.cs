@@ -17,6 +17,12 @@ public class Character_Inventory_UIPanel : MonoBehaviour
             economy.DeductCoins(item.value);
             inventory.Add(item);
             store.RemoveItemFromStore(storeSlot);
+
+            Gameplay_SoundLibrary.instance.PlaySound("ChangeItem");
+        }
+        else
+        {
+            Gameplay_SoundLibrary.instance.PlaySound("Fail");
         }
 
     }

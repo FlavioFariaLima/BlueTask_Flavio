@@ -98,12 +98,16 @@ public class Behavior_Enemy : MonoBehaviour
         {
             Die();
         }
+
+        Gameplay_SoundLibrary.instance.PlaySound("HitEnemy");
     }
 
     private void Die()
     {
         DropLoot();
         Destroy(gameObject);
+
+        Gameplay_SoundLibrary.instance.PlaySound("DieEnemy");
     }
 
 
@@ -112,6 +116,8 @@ public class Behavior_Enemy : MonoBehaviour
         if (lootPrefab)
         {
             Instantiate(lootPrefab, transform.position, Quaternion.identity);
+
+            Gameplay_SoundLibrary.instance.PlaySound("Drop");
         }
     }
 }

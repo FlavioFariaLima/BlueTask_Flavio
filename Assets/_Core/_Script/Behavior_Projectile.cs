@@ -19,6 +19,8 @@ public class Behavior_Projectile : MonoBehaviour
 
         velocity = direction * moveSpeed;
         StartCoroutine(SelfDestruct());
+
+        Gameplay_SoundLibrary.instance.PlaySound("PlayerCast");
     }
 
     private void Update()
