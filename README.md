@@ -1,6 +1,6 @@
 # Dungeon Danger
 
-This at PDF Format => [link](doc: link)
+This at PDF Format => [link](https://github.com/FlavioFariaLima/BlueTask_Flavio/blob/main/README.md))
 
 ## Basic Commands
 
